@@ -1,0 +1,373 @@
+{% extends 'posts/base.html' %}
+{% load staticfiles %}
+{% block main %}
+
+
+
+
+
+        <div class="content-box">
+            <div class="row">
+                <div class="col-md-12">
+           <div class="accordion">
+                <h3>Scores <span class="icon glyphicon glyphicon-plus" style="padding: 1px;"></span></h3>
+
+           </div>
+            <div class="panel">
+                <div id="tab-content">
+                    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                        <li class=""><a href="#live" data-toggle="tab" aria-expanded="false">Live</a></li>
+                        <li class=""><a href="#upcoming" data-toggle="tab" aria-expanded="false">Upcoming</a></li>
+                        <li class="active"><a href="#result" data-toggle="tab" aria-expanded="true">Result</a></li>
+                    </ul>
+                </div>
+                <div id="my-tab-content" class="tab-content">
+                    <div class="tab-pane" id="live">
+                        <div id="owl-demo1" class="owl-carousel owl-theme">
+                                {% for match in live_matches %}
+                                    <div class="item">
+                                        <a href="score/{{ match.series.id|add:0 }}/{{ match.id|add:0 }}" class="match">
+                                            <div class="match-status">
+                                                <h4 class="bg-info">{{ match.localStartDate }}</h4>
+                                                <div class="match-item">
+                                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-md-2">
+                                                                <img alt="{{ match.homeTeam.name }}" src="{{ match.homeTeam.logoUrl }}" style="height: 30px; width: 30px; margin-top: 10px">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <h4 style="color:{{ match.homeTeam.teamColour }}">{{ match.homeTeam.name }}</h4>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <h3>{{ match.scores.homeScore }} ({{ match.scores.homeOvers }})ov </h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-md-2">
+                                                                <img alt="{{ match.awayTeam.name }}" src="{{ match.awayTeam.logoUrl }}" style="height: 30px; width: 30px; margin-top: 10px">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <h4 style="color:{{ match.awayTeam.teamColour }}">{{ match.awayTeam.name }}</h4>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <h3>{{  match.scores.awayScore  }}({{ match.scores.awayOvers }})ov </h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 col-xs-12 col-sm-12">{{ match.currentMatchState }}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    <div class="tab-pane" id="upcoming">
+                         <div id="owl-demo2" class="owl-carousel owl-theme">
+                            {% for match in upcoming_matches %}
+                                <div class="item">
+                                    <a href="score/{{ match.series.id|add:0 }}/{{ match.id|add:0 }}" class="match">
+                                        <div class="match-status">
+                                            <h4 class="bg-info">{{ match.localStartDate }}</h4>
+                                            <div class="match-item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <img alt="{{ match.homeTeam.name }}" src="{{ match.homeTeam.logoUrl }}" style="height: 30px; width: 30px; margin-top: 10px">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <h4 style="color:{{ match.homeTeam.teamColour }}">{{ match.homeTeam.name }}</h4>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <img alt="{{ match.awayTeam.name }}" src="{{ match.awayTeam.logoUrl }}" style="height: 30px; width: 30px; margin-top: 10px">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <h4 style="color:{{ match.awayTeam.teamColour }}">{{ match.awayTeam.name }}</h4>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-xs-12 col-sm-12">{{ match.currentMatchState }}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="result">
+
+
+                        <div id="owl-demo3" class="owl-carousel owl-theme">
+                            {% for match in complete_matches %}
+                                <div class="item">
+                                    <a href="score/{{ match.series.id|add:0 }}/{{ match.id|add:0 }}" class="match">
+                                        <div class="match-status">
+                                            <h4 class="bg-info">{{ match.localStartDate }}</h4>
+                                            <div class="match-item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <img alt="{{ match.homeTeam.name }}" src="{{ match.homeTeam.logoUrl }}" style="height: 30px; width: 30px; margin-top: 10px">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <h4 style="color:{{ match.homeTeam.teamColour }}">{{ match.homeTeam.name }}</h4>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <h3>{{ match.scores.homeScore }} ({{ match.scores.homeOvers }})ov </h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-xs-12 col-sm-12">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <img alt="{{ match.awayTeam.name }}" src="{{ match.awayTeam.logoUrl }}" style="height: 30px; width: 30px; margin-top: 10px">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <h4 style="color:{{ match.awayTeam.teamColour }}">{{ match.awayTeam.name }}</h4>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <h3>{{  match.scores.awayScore  }}({{ match.scores.awayOvers }})ov </h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-xs-12 col-sm-12">{{ match.currentMatchState }}</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+             <div class="main-news-blks">
+                <div class="hm-slider-cont">
+                   <!-- News slider -->
+                   <div class="flex-container">
+                      <div class="flexslider hm-slider">
+                         {% if post_list %}
+                            <ul class="slides">
+                            {% for post in post_list %}
+                                <li>
+                                   <img alt="" src="{{ post.image.url }}" />
+                                   <h3 class="cat-label cat-label1">
+                                       <a href="#">{{ post.category_post }}</a>
+                                   </h3>
+                                   <div class="hm-sldr-caption">
+                                      <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                                      <p>{{ post.content | truncatewords:30 }}</p>
+                                   </div>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                         {% else %}
+                             <p>No Posts are available.</p>
+                         {% endif %}
+                      </div>
+                   </div>
+                </div>
+                <!-- Fixed Blocks -->
+                <div class="mid-blks-cont">
+                   <!-- Block1 -->
+                   <div class="mid-block-1 boxgrid caption">
+                      <img alt="" src="{{ post_list2.image.url }}" style="width: 391px; height: 231px"/>
+                      <h4 class="cat-label cat-label2"><a href="#">{{ post_list2.category_post }}</a></h4>
+                      <div class="cover boxcaption">
+                           <h3><a href="{{ post_list2.get_absolute_url }}">{{ post_list2.title }}</a></h3>
+                            <p>{{ post_list2.content | truncatewords:30 }}</p>
+                         <a href="#">MORE <i class="fa fa-angle-double-right"></i></a>
+                      </div>
+                   </div>
+                   <!-- Block2 -->
+                   <div class="mid-block-2 boxgrid caption">
+                      <img alt="" src="{{ post_cat2.image.url }}" style="width: 391px; height: 231px"/>
+                      <h4 class="cat-label cat-label3"><a href="#">{{ post_cat2.category_post }}</a></h4>
+                      <div class="cover boxcaption">
+                         <h3><a href="{{ post_cat2.get_absolute_url }}">{{ post_cat2.title }}</a></h3>
+                            <p>{{ post_cat2.content | truncatewords:30 }}</p>
+                         <a href="#">MORE <i class="fa fa-angle-double-right"></i></a>
+                      </div>
+                   </div>
+                </div>
+                <!-- Block3 -->
+                <div class="rt-bk-cont">
+                   <div class="rt-block boxgrid2 caption">
+                      <img alt="" src="{{ post_cat3.image.url }}" style="width: 289px; height: 475px"/>
+                      <h4 class="cat-label cat-label3"><a href="#">{{ post_cat3.category_post }}</a></h4>
+                      <div class="cover boxcaption">
+                         <h3><a href="{{ post_cat3.get_absolute_url }}">{{ post_cat3.title }}</a></h3>
+                            <p>{{ post_cat3.content | truncatewords:30 }}</p>
+                         <a href="#">MORE <i class="fa fa-angle-double-right"></i></a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+      <!-- Main Body -->
+         <!-- Main Left side -->
+         <div class="main-left-side">
+            <!-- Top News Section -->
+            <div class="top-news float-width">
+               <div class="float-width sec-cont">
+                  <h3 class="sec-title">Top news</h3>
+                  <div class="top-big-two row">
+                      {% for t in top %}
+                          <div class="big-two blocky boxgrid3 caption">
+                            <img alt="" src="{{ t.image.url }}" style="width: 367px; height: 269px"/>
+                            <div class="cover boxcaption3">
+                               <h3><a href="{{ t.get_absolute_url }}">{{ t.title }}</a></h3>
+                               <p class="artcl-time-1">
+                                  <span><i class="fa fa-clock-o"></i>{{ t.timestamp }}</span>
+                                  <span><i class="fa fa-comment-o"></i>21 comments</span>
+                               </p>
+                               <p>{{ t.content | truncatewords:15 }}</p>
+                            </div>
+                         </div>
+                      {% endfor %}
+                  </div>
+               </div>
+            </div>
+            <!-- Sec 1 -->
+            <div class="news-sec-1 float-width">
+               <div class="float-width sec-cont2">
+                  <h3 class="sec-title">MUSIC NEWS</h3>
+                  <div class="sec-1-big float-width">
+                     <img alt="" class="blocky" src="img/samples/z1.jpg" />
+                     <div class="sec-1-big-text lefty">
+                        <h3>Famous artist share his tracks for free</h3>
+                        <h6><span><i class="fa fa-user"></i>John Doe</span><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                        <p>Suspendisse dapibus blandit auctor. Aenean nisl felis, fermentum in ante sit amet, lobortis hendrerit nunc. Curabitur pharetra in velit at ornare. Pellentesque vitae nibh volutpat velit feugiat euismod ut a elit. Donec in felis rutrum risus bibendum cursus. Aliquam interdum aliquam elementum ...</p>
+                     </div>
+                  </div>
+                  <div class="sec-1-sm">
+                     <img alt="" class="blocky" src="img/samples/e5.jpg" />
+                     <div class="sec-1-sm-text blocky">
+                        <h3>TOP 10 Pop track list past year</h3>
+                        <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                        <p>Suspendisse dapibus blandit auctor. Aenean nisl felis, fermentum in ante sit...</p>
+                     </div>
+                  </div>
+                  <div class="sec-1-sm">
+                     <img alt="" class="blocky" src="img/samples/e6.jpg" />
+                     <div class="sec-1-sm-text blocky">
+                        <h3>Another Hip-Hop rising star</h3>
+                        <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                        <p>Suspendisse dapibus blandit auctor. Aenean nisl felis, fermentum in ante sit...</p>
+                     </div>
+                  </div>
+                  <div class="sec-1-sm">
+                     <img alt="" class="blocky" src="img/samples/e7.jpg" />
+                     <div class="sec-1-sm-text blocky">
+                        <h3>New MP3 tracks are coming </h3>
+                        <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                        <p>Suspendisse dapibus blandit auctor. Aenean nisl felis, fermentum in ante sit...</p>
+                     </div>
+                  </div>
+                  <div class="sec-1-sm">
+                     <img alt="" class="blocky" src="img/samples/e8.jpg" />
+                     <div class="sec-1-sm-text blocky">
+                        <h3>DJ Open Music Festival 2014</h3>
+                        <h6><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                        <p>Suspendisse dapibus blandit auctor. Aenean nisl felis, fermentum in ante sit...</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      <!-- Main Right side -->
+         <div class="main-right-side">
+            <!-- Social Media Counter -->
+            <div class="smedia">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content-padding">
+                            <h1 class="poll-name">Poll</h1>
+                        </div>
+                        <div class="content">
+                            <h2>{{ poll.question }}</h2>
+                            <form method="POST" id="poll-form">
+                                {% csrf_token %}
+                                {% for choice in poll.choice_set.all %}
+                                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+                                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+                                {% endfor %}
+                                <input type="hidden" name="poll_id" id="hide" value={{ poll.pk }}>
+                                <div id="results"></div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                            <div class="result" style="display: none;">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr><th colspan="4">Results</th></tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending news right -->
+            <div class="trending lefty">
+               <h3 class="sec-title">TRENDING</h3>
+               <div class="trend-1">
+                  <a href="#"><img alt="" src="{% static "img/samples/z3.jpg" %}" /></a>
+                  <a class="lefty cat-a cat-label2" href="#">GAMES</a>
+                  <div class="trend-2">
+                     <h3><a href="#">Watch Dogs - First gameplay this year</a></h3>
+                     <p>Curabitur fringilla porttitor porta. Vivamus vel nulla ullamcorper, fringilla ligula nec, pellentesque nisl. Sed dolor..</p>
+                     <p class="artcl-time-1">
+                        <span><i class="fa fa-clock-o"></i>20 Jan 2014</span>
+                        <span><i class="fa fa-comment-o"></i>21 comments</span>
+                     </p>
+                  </div>
+               </div>
+               <div class="float-width">
+                  <div class="trend-sm float-width">
+                     <a href="#"><img alt="" class="lefty" src="img/samples/e2.jpg" /></a>
+                     <h4 class="lefty">USA Games Studio will release sandbox new game</h4>
+                     <a class="lefty cat-a cat-label2" href="#">GAMES</a>
+                     <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
+                  </div>
+                  <div class="trend-sm float-width">
+                     <a href="#"><img alt="" class="lefty" src="img/samples/e1.jpg" /></a>
+                     <h4 class="lefty">After party of Blondi Concert will begin tomorrow</h4>
+                     <a class="lefty cat-a cat-label4" href="#">MUSIC</a>
+                     <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
+                  </div>
+                  <div class="trend-sm float-width">
+                     <a href="#"><img alt="" class="lefty" src="img/samples/e3.jpg" /></a>
+                     <h4 class="lefty">The best place to see in Winter season this year</h4>
+                     <a class="lefty cat-a cat-label3" href="#">TOURISM</a>
+                     <p class="righty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span></p>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Ad banner right -->
+            <div class="lefty ad-rt">
+               <a href="#"><img alt="" src="img/samples/u1.jpg" /></a>
+            </div>
+         </div>
+{% endblock %}

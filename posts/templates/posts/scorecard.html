@@ -1,0 +1,301 @@
+{% extends 'posts/base.html' %}
+{% load staticfiles %}
+{% block main %}
+<div class='container'>
+    <div id="artile_lbox" class="fleft">
+        <div class="clearfix result_tabs">
+            <ul class="fleft mt10">
+                <li class="active"><a href="/cricketnext/results/">Results</a></li>
+                <li><a href="/cricketnext/cricket-live-scorecard/">Live Matches</a></li>
+                <li><a href="/cricketnext/cricket-schedule/">Upcoming Matches</a></li>
+            </ul>
+        </div>
+        <div id="grup_stage">
+            <div class="ch_rs_league mar0" style="border:none">
+                <h2 class="ttu ch_heading tac ">{{ teamNames.teamInfo.hometeam }}<b>vs</b> {{ teamNames.teamInfo.awayteam }} </h2>
+
+            </div>
+            <div class="match_tabs">
+                <ul>
+                    <li class="" rel="/cricketnext/live-score/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">
+                        <a href="/cricketnext/live-score/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">Quick Scorecard</a>
+                    </li>
+                    <li rel="/cricketnext/live-score/full/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html" class="active">
+                        <a href="/cricketnext/live-score/full/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html" class="pd_18">Full Scorecard</a>
+                        <span><img src="http://static.ibnlive.in.com/ibnlive/pix/ibnhome/cricketnext/microsite/dow-arrow.png"></span>
+                    </li>
+                    <li class="" rel="/cricketnext/match-preview/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">
+                        <a class="pd_top17" href="/cricketnext/match-preview/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">Match Preview/Report</a>
+                    </li>
+                    <li class="" rel="/cricketnext/live-commentary/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">
+                        <a href="/cricketnext/live-commentary/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">Commentary</a>
+                    </li>
+                    <li class="" rel="/cricketnext/cricket-chart/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">
+                        <a href="/cricketnext/cricket-chart/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">Charts</a>
+                    </li>
+                    <li class="" rel="/cricketnext/info/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">
+                        <a href="/cricketnext/info/west-indies-tri-nation-series-2016/west-indies-vs-australia/wiau06132016179871.html">Match Info</a>
+                    </li>
+                    <div class="cls"></div>
+                </ul>
+            </div>
+            <div class="res_shedlue">
+                <div class="comentry_headings">
+                    <div id="fullScoreBox">
+                        <h3 class="odi">
+                            <strong>{{ matchName }}</strong>  | {{ teamNames.teamInfo.startDate }}  |  {{ teamNames.teamInfo.venue }}
+                        </h3>
+                        <div class="clearfix inn">
+                            <span class="fleft tos1">{{ toss }}</span>
+                        </div>
+                        <div class="ma_b_15">
+                            <table class="pitch_table pitch pit">
+                                <tbody>
+                                    <tr>
+                                        <th>MATCH RESULT</th>
+                                        <th>MAN OF THE MATCH</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ teamNames.teamInfo.result }}</td>
+                                        <td>Marlon Samuels</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <ul data-phases-nav class="phases-tabs">
+                            <li class="fetch_score" >
+                                <a href="#phaseone" data-phase="1" class="phaseone __active">
+                                    <span class="box1" >
+                                        <b class="ttu" style="color: {{ teamNames.teamInfo.homecolor }}">{{ teamNames.teamInfo.hometeam }}</b>
+                                        <img width="58" height="38" src="{{ teamNames.teamInfo.homelogo }}">
+                                    </span>
+                                    <span class="box2">{{ teamNames.teamInfo.homeScore }}
+{#                                        <i>R/R: 5.3</i>#}
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="fetch_score" >
+                                 <a href="#phasetwo" data-phase="2" class="phasetwo">
+                                    <span class="box1">
+                                        <b class="ttu" style="color:{{ teamNames.teamInfo.awaycolor }}">{{ teamNames.teamInfo.awayteam }}</b>
+                                        <img width="58" height="38" src="{{ teamNames.teamInfo.awaylogo }}">
+                                    </span>
+                                    <span class="box2">{{ teamNames.teamInfo.awayScore }}
+{#                                        <i>R/R: 5.3</i>#}
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+
+
+                        <div data-phases-tabs class="phases-container">
+                            <div id="phaseone" class="phases-tabbox __active">
+                                <table class="pitch_table pitch mt5">
+                                    <tbody>
+                                        <tr>
+                                           <th class="p1 tr_left">BATSMAN    </th>
+                                           <th class="p2">R    </th>
+                                           <th class="p2">B    </th>
+                                           <th class="p2">4s    </th>
+                                           <th class="p2">6s    </th>
+                                           <th class="p2">SR  </th>
+                                       </tr>
+                                       <tr class="">
+                                            <td class="tr_left" style="font-size:11px">
+                                                <a href="/cricketnext/profile/johnson-charles/25890.html">Johnson Charles</a>
+                                                <span class="">lbw b Adam Zampa</span>
+                                            </td>
+                                            <td>48</td>
+                                            <td>38</td>
+                                            <td>5</td>
+                                            <td>1</td>
+                                            <td>126.32</td>
+                                        </tr>
+                                        <tr class="">
+                                            <td class="tr_left" style="font-size:11px">
+                                                <a href="/cricketnext/profile/andre-fletcher/4915.html">Andre Fletcher</a><span class="">c George Bailey b James Faulkner</span>
+                                            </td>
+                                            <td>27</td>
+                                            <td>27</td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                            <td>100.00</td>
+                                        </tr>
+
+                                        <tr class="">
+                                            <td class="tr_left" style="font-size:11px">
+                                                <a href="/cricketnext/profile/darren-bravo/4257.html">Darren Bravo</a>
+                                                <span class="">c Matthew Wade b Adam Zampa</span>
+                                            </td>
+                                            <td>39</td>
+                                            <td>63</td>
+                                            <td>3</td>
+                                            <td>1</td>
+                                            <td>61.90</td>
+                                        </tr>
+                                        <tr class="">
+                                            <td class="tr_left" style="font-size:11px">
+                                                <a href="/cricketnext/profile/marlon-samuels/2630.html">Marlon Samuels</a><span class="">run out (Matthew Wade)</span>
+                                            </td>
+                                            <td>92</td>
+                                            <td>87</td>
+                                            <td>8</td>
+                                            <td>4</td>
+                                            <td>105.75</td>
+                                        </tr>
+                                        <tr class="">
+                                            <td class="tr_left" style="font-size:11px">
+                                                <a href="/cricketnext/profile/denesh-ramdin/3696.html">Denesh Ramdin (W)</a>
+                                                <span class="">b Nathan Coulter-Nile</span>
+                                            </td>
+                                            <td>29</td>
+                                            <td>38</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>76.32</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="pitch_table pitch my_table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="" style="width:35%; font-weight:bold;">Extras
+                                                <span class="ex">(b - 0, w - 9, no - 0, lb - 3, penalty - 0)</span></td>    <td style="width:40%;">12</td>  </tr><tr>    <td class="ttu" style="width:35%; font-weight:bold; font-size:14px;">Total</td>    <td style="width:40%; font-size:14px;">266<span class="ttu f_w">  (5.86 runs per over)</span></td>  </tr><tr>    <td colspan="3">       <span class="ttu f_w2">Fall of Wickets</span> <div class="player">1-74 (<a href="/cricketnext/profile/andre-fletcher/4915.html">Andre Fletcher</a>, 9.5 ov), 2-85 (<a href="/cricketnext/profile/johnson-charles/25890.html">Johnson Charles</a>, 13.4 ov), 3-167 (<a href="/cricketnext/profile/darren-bravo/4257.html">Darren Bravo</a>, 30.5 ov), 4-240 (<a href="/cricketnext/profile/marlon-samuels/2630.html">Marlon Samuels</a>, 40.4 ov), 5-254 (<a href="/cricketnext/profile/denesh-ramdin/3696.html">Denesh Ramdin</a>, 43.2 ov), 6-254 (<a href="/cricketnext/profile/jason-holder/10232.html">Jason Holder</a>, 43.4 ov)</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <div class="ma_t_15">
+                                    <table class="pitch_table pitch">
+                                        <tbody>
+                                            <tr>        <th class="p1 tr_left">BOWLERS      </th><th class="p2">O        </th><th class="p2">M        </th><th class="p2">R       </th><th class="p2">WKT        </th><th class="p2">WD      </th><th class="p2">NB       </th><th class="p2">ECON     </th></tr><tr class=""> <td class="tr_left"><a href="/cricketnext/profile/josh-hazlewood/4255.html">Josh Hazlewood</a></td>        <td>9</td>        <td>0</td>        <td>46</td>        <td>0</td>        <td>0</td>        <td>0</td>        <td>5.11</td>      </tr><tr class=""> <td class="tr_left"><a href="/cricketnext/profile/nathan-coulter-nile/10090.html">Nathan Coulter-Nile</a></td>        <td>9.4</td>        <td>0</td>        <td>67</td>        <td>2</td>        <td>4</td>        <td>0</td>        <td>6.93</td>      </tr><tr class=""> <td class="tr_left"><a href="/cricketnext/profile/james-faulkner/4249.html">James Faulkner</a></td>        <td>6</td>        <td>0</td>        <td>31</td>        <td>1</td>        <td>0</td>        <td>0</td>        <td>5.17</td>      </tr><tr class=""> <td class="tr_left"><a href="/cricketnext/profile/travis-head/62023.html">Travis Head</a></td>        <td>6</td>        <td>0</td>        <td>29</td>        <td>0</td>        <td>1</td>        <td>0</td>        <td>4.83</td>      </tr><tr class=""> <td class="tr_left"><a href="/cricketnext/profile/mitchell-marsh/10094.html">Mitchell Marsh</a></td>        <td>8</td>        <td>0</td>        <td>30</td>        <td>0</td>        <td>0</td>        <td>0</td>        <td>3.75</td>      </tr><tr class=""> <td class="tr_left"><a href="/cricketnext/profile/adam-zampa/58913.html">Adam Zampa</a></td>        <td>7</td>        <td>0</td>        <td>60</td>        <td>2</td>        <td>0</td>        <td>0</td>        <td>8.57</td>      </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="pitch_report mynotes2">
+                                    <div class="pitch_heading mynotes">
+                                        <h4 class="fleft ttu">Match notes</h4><div class="cls"></div></div><p class="text match_notes"><span>A Fletcher dropped on 4 by U Khawaja in 1.4 overs</span><span>West Indies 52/0 in 5.5 overs</span><span>1st wkt Partnership: 52 off 35 balls between J Charles (29) A Fletcher (22)</span><span>Mandatory power play (1-10): West Indies 74/1</span><span>West Indies 103/2 in 16.1 overs</span><span>Drinks: West Indies 104/2 in 17.0 overs</span><span>3rd wkt Partnership: 50 off 70 balls between D Bravo (27) M Samuels (22)</span><span>West Indies 150/2 in 28.1 overs</span><span>M Samuels 27th ODI fifty: 53 runs in 58 balls (6x4) (1x6)</span><span>Drinks: West Indies 185/3 in 34.0 overs</span><span>West Indies 203/3 in 35.4 overs</span><span>Referral 2 (36.5 overs): Australia against M Samuels (Caught) - Unsuccessful (WI 1, AUS 0)</span><span>West Indies 250/4 in 43.0 overs</span><span>Referral 3 (43.4 overs): J Holder against Australia (Caught) - Unsuccessful (WI 0, AUS 0)</span></p>
+                                    </div>
+                                </div>
+                            <div id="phasetwo" class="phases-tabbox">
+                                <table class="pitch_table pitch mt5">
+                                    <tbody>
+                                        <tr>
+                                           <th class="p1 tr_left">BATSMAN    </th>
+                                           <th class="p2">R    </th>
+                                           <th class="p2">B    </th>
+                                           <th class="p2">4s    </th>
+                                           <th class="p2">6s    </th>
+                                           <th class="p2">SR  </th>
+                                       </tr>
+
+                                           {% for score in teamWin %}
+                                               <tr class="">
+                                                    <td class="tr_left" style="font-size:11px">
+                                                        <a href="/cricketnext/profile/johnson-charles/25890.html">
+                                                            {{ score.name }}
+                                                        </a>
+                                                        <span class="">
+                                                            {% if score.howOut %}
+                                                                {{ score.howOut }}
+                                                            {% endif %}
+                                                        </span>
+                                                    </td>
+                                                    {% if score.runs %}
+                                                        <td>{{ score.runs }}</td>
+                                                        {% else %}
+                                                            <td></td>
+                                                    {% endif %}
+                                                    {% if score.balls %}
+                                                        <td>{{ score.balls }}</td>
+                                                        {% else %}
+                                                            <td></td>
+                                                    {% endif %}
+
+                                                    {% if score.fours %}
+                                                        <td>{{ score.fours }}</td>
+                                                       {% else %}
+                                                            <td></td>
+                                                    {% endif %}
+                                                    {% if score.sixes %}
+                                                        <td>{{ score.sixes }}</td>
+                                                        {% else %}
+                                                            <td></td>
+                                                    {% endif %}
+
+                                                    {% if score.strikeRate %}
+                                                        <td>{{ score.strikeRate }}</td>
+                                                        {% else %}
+                                                            <td></td>
+                                                    {% endif %}
+
+                                               </tr>
+                                           {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <table class="pitch_table pitch my_table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="" style="width:35%; font-weight:bold;">Extras
+                                                <span class="ex">(b - 0, w - 9, no - 0, lb - 3, penalty - 0)</span></td>    <td style="width:40%;">12</td>  </tr><tr>    <td class="ttu" style="width:35%; font-weight:bold; font-size:14px;">Total</td>    <td style="width:40%; font-size:14px;">266<span class="ttu f_w">  (5.86 runs per over)</span></td>  </tr><tr>    <td colspan="3">       <span class="ttu f_w2">Fall of Wickets</span> <div class="player">1-74 (<a href="/cricketnext/profile/andre-fletcher/4915.html">Andre Fletcher</a>, 9.5 ov), 2-85 (<a href="/cricketnext/profile/johnson-charles/25890.html">Johnson Charles</a>, 13.4 ov), 3-167 (<a href="/cricketnext/profile/darren-bravo/4257.html">Darren Bravo</a>, 30.5 ov), 4-240 (<a href="/cricketnext/profile/marlon-samuels/2630.html">Marlon Samuels</a>, 40.4 ov), 5-254 (<a href="/cricketnext/profile/denesh-ramdin/3696.html">Denesh Ramdin</a>, 43.2 ov), 6-254 (<a href="/cricketnext/profile/jason-holder/10232.html">Jason Holder</a>, 43.4 ov)</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <div class="ma_t_15">
+                                    <table class="pitch_table pitch">
+                                        <tbody>
+                                            <tr>
+                                                <th class="p1 tr_left">BOWLERS      </th>
+                                                <th class="p2">O        </th>
+                                                <th class="p2">M        </th>
+                                                <th class="p2">R       </th>
+                                                <th class="p2">WKT        </th>
+                                                <th class="p2">WD      </th>
+                                                <th class="p2">NB       </th>
+                                                <th class="p2">ECON     </th>
+                                            </tr>
+
+                                            {% for bowler in bowlersLost %}
+                                              <tr class="">
+                                                    <td class="tr_left">
+                                                        <a href="/cricketnext/profile/josh-hazlewood/4255.html">{{ bowler.name }}</a></td>
+                                                    <td>{{ bowler.overs }}</td>
+                                                    <td>{{ bowler.maidens }}</td>
+                                                    <td>{{ bowler.runsConceded }}</td>
+                                                    <td>{{ bowler.wickets }}</td>
+                                                    <td>{{ bowler.wides }}</td>
+                                                    <td>{{ bowler.noBalls }}</td>
+                                                    <td>{{ bowler.economy }}</td>
+                                              </tr>
+                                           {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="pitch_report mynotes2">
+                                    <div class="pitch_heading mynotes">
+                                        <h4 class="fleft ttu">Match notes</h4><div class="cls"></div></div><p class="text match_notes"><span>A Fletcher dropped on 4 by U Khawaja in 1.4 overs</span><span>West Indies 52/0 in 5.5 overs</span><span>1st wkt Partnership: 52 off 35 balls between J Charles (29) A Fletcher (22)</span><span>Mandatory power play (1-10): West Indies 74/1</span><span>West Indies 103/2 in 16.1 overs</span><span>Drinks: West Indies 104/2 in 17.0 overs</span><span>3rd wkt Partnership: 50 off 70 balls between D Bravo (27) M Samuels (22)</span><span>West Indies 150/2 in 28.1 overs</span><span>M Samuels 27th ODI fifty: 53 runs in 58 balls (6x4) (1x6)</span><span>Drinks: West Indies 185/3 in 34.0 overs</span><span>West Indies 203/3 in 35.4 overs</span><span>Referral 2 (36.5 overs): Australia against M Samuels (Caught) - Unsuccessful (WI 1, AUS 0)</span><span>West Indies 250/4 in 43.0 overs</span><span>Referral 3 (43.4 overs): J Holder against Australia (Caught) - Unsuccessful (WI 0, AUS 0)</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

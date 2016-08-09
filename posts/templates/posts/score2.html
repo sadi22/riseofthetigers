@@ -1,0 +1,169 @@
+{% extends 'posts/base.html' %}
+{% load staticfiles %}
+{% block main %}
+<div class="container">
+
+    <div class="yom-mod yom-match-header">
+        <div class ="row">
+            <div class = "col-md-4">
+                <div class="grounds-section">
+                    <a href="">
+                        <img src="https://s.yimg.com/qx/cricket/fufp/images/venue_169_thumb-12-7-2010-d4551fa897aaa7596c31afbb8d8ed193.jpg" class="ground-image" >
+                    </a>
+
+                    <div class="match-info">
+                        <p class="ground-info">
+                            <a href="/ground-profile/warner-park--basseterre--st-kitts_169" class="ground-name">{{ teamNames.teamInfo.venue }}</a>
+                        </p>
+{#                        <p>#}
+{#                            <a href="/ground-profile/warner-park--basseterre--st-kitts_169" class="ground-name">#}
+{#                                <span class="place"> Basseterre, West Indies</span>#}
+{#                            </a>#}
+{#                        </p>#}
+                        <div class="weather ycric-clrfix">
+                            <p>
+                                <span class="time-info">{{ teamNames.teamInfo.startDate }}</span>&nbsp;<span class="venue-msg"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-4">
+                <div class="teams-section">
+                    <div class="team-container">
+                        <a href="">
+                            <img src="{{ teamNames.teamInfo.homelogo }}" class="img-circle"></a>
+                        <p class="team-name"><a href="" style="color: {{ teamNames.teamInfo.homecolor }} ">{{ teamNames.teamInfo.hometeam }}</a></p>
+                    </div>
+
+
+                    <div class="vs">
+                        <p class="vs-text">vs.</p>
+                    </div>
+
+                    <div class="team-container team2">
+                        <a href="">
+                           <img src="{{ teamNames.teamInfo.awaylogo }}" class="img-circle"></a>
+                        </a>
+                        <p class="team-name"><a href="" style="color: {{ teamNames.teamInfo.awaycolor }} ">{{ teamNames.teamInfo.awayteam }}</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-4">
+                <div class="weather-section post">
+                    <div class="ico-temp">
+                        <div class="toss-info">{{ toss }}</div>
+                        <div class="match-time-string"></div>
+                        <div class="weather-info">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="ycricmj-omstage ycricmj-clrfix" id="yui_3_10_3_1_1466042903177_83939">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="top ycricmj-nti-nt-sprite">
+                    <div class="content">
+{#                        <span class="name">SA </span>#}
+                        <span class="result">{{ teamNames.teamInfo.result }}</span>
+                        <div class="scores-list">
+                            <img src="{{ teamNames.teamInfo.homelogo }}" class="img-circle-small">
+                            <span class="tname">{{ teamNames.teamInfo.hometeam }}</span>
+                            <span class="score">{{ teamNames.teamInfo.homeScore }}</span>
+{#                            <span class="overs">(50) </span>#}
+                            <img src="{{ teamNames.teamInfo.awaylogo }}" class="img-circle-small">
+                            <span class="tname">{{ teamNames.teamInfo.awayteam }}</span>
+                            <span class="score">{{ teamNames.teamInfo.awayScore }}</span>
+{#                            <span class="overs">(38) </span>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="player-info">
+                        <div class="player-img">
+                            <a href="/player-profile/imran-tahir_4945" title="Imran Tahir"><img src="{{ player_image }}" height="50" width="46"></a>
+                        </div>
+                        <div class="player-name">
+                            <div class="title">Player of the match</div>
+                            <div class="sn">
+                                <a href="/player-profile/imran-tahir_4945">{{ player_name }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="tabs">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="ycricmj-fcfs-tabs ycricmj-clrfix">
+                        <li class=" tabs-fc ycricmj-vti-sprite " loaded="" ing="1">
+                            <a href="#fc_ing1">1st Innings<br><em>SA <span>343/4</span></em></a>
+                        </li>
+                        <li class=" tabs-fc ycricmj-vti-sprite " loaded="" ing="2">
+                            <a href="#fc_ing2">2nd Innings<br><em>WI <span>204/10</span></em></a>
+                        </li>
+                        <li class="tabs-fs ycricmj-vti-sprite selected" id="ycricmj-fs-main-tab" >
+                            <a href="#fullScorecard">
+                                <em>Full Scorecard</em>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                    <ul class="ycricmj-comm-graphs ycricmj-clrfix">
+                        <li title="Click to see Wagon Wheel Graph" class="graphs-wgn ycricmj-nti-sprite" ing="2"></li>
+                        <li title="Click to see Manhattan Graph" class="graphs-mnh ycricmj-nti-sprite" ing="2"></li>
+                        <li title="Click to see Worm Graph" class="graphs-worm ycricmj-nti-sprite" ing="2"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="scorecard">
+            <ul id="accordion" class="accordion">
+              <li class="default open">
+                <div class="link"><img src="{{ teamNames.teamInfo.homelogo }}" class="img-circle-small"></i>
+                    <div class="team-name" style="color: {{ teamNames.teamInfo.homecolor }}">
+                        {{ teamNames.teamInfo.hometeam_full }}
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                </div>
+                <ul class="submenu">
+                  <li><a href="#">Photoshop</a></li>
+                  <li><a href="#">HTML</a></li>
+                  <li><a href="#">CSS</a></li>
+                  <li><a href="#">Maquetacion web</a></li>
+                </ul>
+              </li>
+              <li >
+                <div class="link"><img src="{{ teamNames.teamInfo.awaylogo }}" class="img-circle-small"></i>
+                    <div class="team-name" style="color: {{ teamNames.teamInfo.awaycolor }}">
+                        {{ teamNames.teamInfo.awayteam_full }}
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                </div>
+                <ul class="submenu">
+                  <li><a href="#">Javascript</a></li>
+                  <li><a href="#">jQuery</a></li>
+                  <li><a href="#">Frameworks javascript</a></li>
+                    <li><a href="#">Javascript</a></li>
+                  <li><a href="#">jQuery</a></li>
+                  <li><a href="#">Frameworks javascript</a></li>
+                    <li><a href="#">Javascript</a></li>
+                  <li><a href="#">jQuery</a></li>
+                  <li><a href="#">Frameworks javascript</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+    </div><!-- end container -->
+
+
+{% endblock %}

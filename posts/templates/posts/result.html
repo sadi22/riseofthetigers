@@ -1,0 +1,32 @@
+{% extends 'posts/base.html' %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="contents">
+    <div class="top-news float-width">
+       <div class="float-width sec-cont">
+          <h3 class="sec-title">Your Search Result</h3>
+            {% if result %}
+          <div class="top-big-two row">
+              {% for t in result %}
+                  <div class="big-two blocky boxgrid3 caption">
+                    <img alt="" src="{{ t.image.url }}"/>
+                    <div class="cover boxcaption3">
+                       <h3><a href="{{ t.get_absolute_url }}">{{ t.title }}</a></h3>
+                       <p class="artcl-time-1">
+                          <span><i class="fa fa-clock-o"></i>{{ t.timestamp }}</span>
+                       </p>
+                       <p>{{ t.content | truncatewords:15 }}</p>
+                    </div>
+                 </div>
+              {% endfor %}
+          </div>
+       {% else %}
+            <p>Opps!! Nothing matches with your query</p>
+       {% endif %}
+       </div>
+    </div>
+</div>
+
+{% endblock %}
+

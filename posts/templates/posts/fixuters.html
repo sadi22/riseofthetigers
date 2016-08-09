@@ -1,0 +1,125 @@
+{% extends 'posts/base.html' %}
+{% load staticfiles %}
+{% block main %}
+    <div class="row">
+            <div class="col-md-12 content-box">
+            <div id="tab-content">
+                <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                    <li class=""><a href="#live" data-toggle="tab" aria-expanded="false">Live</a></li>
+                    <li class=""><a href="#upcoming" data-toggle="tab" aria-expanded="false">Upcoming</a></li>
+                    <li class="active"><a href="#result" data-toggle="tab" aria-expanded="true">Result</a></li>
+                </ul>
+            </div>
+            <div id="my-tab-content" class="tab-content">
+                <div class="tab-pane" id="live">
+                    <div class="main-fixtures">
+                        {% for match in live_matches %}
+
+                            <div class="matches" >
+                                <a href="{% url 'index' %}score/{{ match.series.id|add:0 }}/{{ match.id|add:0 }}" class="match">
+                                    <h2 style="text-align: center">{{ match.series.name }}</h2>
+                                    <h4 style="text-align: center">{{ match.localStartDate }}</h4>
+{#                                    <div class="row">#}
+{#                                        <div class="time_date col-md-6 center">#}
+{#                                            {{ match.localStartDate }}#}
+{#                                        </div>#}
+{#                                        <div class="venue col-md-6 center">#}
+{#                                            {{ match.venue.name }}#}
+{#                                        </div>#}
+{#                                    </div>#}
+
+                                    <div class="row">
+                                        <div class="col-md-4 center">
+                                            <img alt="{{ match.homeTeam.name }}" src="{{ match.homeTeam.logoUrl }}" style="height: 38px; width: 58px; border: 1px solid #f0e9c3;">
+                                            <span>{{ match.scores.homeScore }}</span>
+                                            <h4 style="color:{{ match.homeTeam.teamColour }}">{{ match.homeTeam.name }}</h4>
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            VS
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            {{ match.scores.awayScore }}
+                                            <span>
+                                                <img alt="{{ match.awayTeam.name }}" src="{{ match.awayTeam.logoUrl }}" style="height: 38px; width: 58px; border: 1px solid #f0e9c3;">
+                                            </span>
+                                            <h4 style="color:{{ match.awayTeam.teamColour }}">{{ match.awayTeam.name }}</h4>
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="upcoming">
+                     <div class="main-fixtures">
+                        {% for match in upcoming_matches %}
+                             <div class="matches" >
+                                <a href="{% url 'index' %}score/{{ match.series.id|add:0 }}/{{ match.id|add:0 }}" class="match">
+                                    <h2 style="text-align: center">{{ match.series.name }}</h2>
+                                     <h4 style="text-align: center">{{ match.localStartDate }}</h4>
+                                    <div class="row">
+                                        <div class="col-md-4 center">
+                                            <img alt="{{ match.homeTeam.name }}" src="{{ match.homeTeam.logoUrl }}" style="height: 38px; width: 58px; border: 1px solid #f0e9c3;">
+                                            <span>{{ match.scores.homeScore }}</span>
+                                            <h4 style="color:{{ match.homeTeam.teamColour }}">{{ match.homeTeam.name }}</h4>
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            VS
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            {{ match.scores.awayScore }}
+                                            <span>
+                                                <img alt="{{ match.awayTeam.name }}" src="{{ match.awayTeam.logoUrl }}" style="height: 38px; width: 58px; border: 1px solid #f0e9c3;">
+                                            </span>
+                                            <h4 style="color:{{ match.awayTeam.teamColour }}">{{ match.awayTeam.name }}</h4>
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="tab-pane active" id="result">
+
+
+                    <div class="main-fixtures">
+                        {% for match in complete_matches %}
+                             <div class="matches" >
+                                <a href="{% url 'index' %}score/{{ match.series.id|add:0 }}/{{ match.id|add:0 }}" class="match">
+                                    <h2 style="text-align: center">{{ match.series.name }}</h2>
+                                     <h3 style="text-align: center">{{ match.localStartDate }}</h3>
+                                    <div class="row">
+                                        <div class="col-md-4 center">
+                                            <img alt="{{ match.homeTeam.name }}" src="{{ match.homeTeam.logoUrl }}" style="height: 38px; width: 58px; border: 1px solid #f0e9c3;">
+                                            <span>{{ match.scores.homeScore }}</span>
+                                            <h4 style="color:{{ match.homeTeam.teamColour }}">{{ match.homeTeam.name }}</h4>
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            VS
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            {{ match.scores.awayScore }}
+                                            <span>
+                                                <img alt="{{ match.awayTeam.name }}" src="{{ match.awayTeam.logoUrl }}" style="height: 38px; width: 58px; border: 1px solid #f0e9c3;">
+                                            </span>
+                                            <h4 style="color:{{ match.awayTeam.teamColour }}">{{ match.awayTeam.name }}</h4>
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

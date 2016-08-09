@@ -1,0 +1,867 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+   <!--<![endif]-->
+<head>
+
+   <meta charset="utf-8">
+
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+   <title>Rise Of The Tigers</title>
+
+   <meta name="description" content="Magalla Magazine and News Template on Themeforest">
+    <meta property="fb:app_id" content="823385721128354"/>
+
+   <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" >
+
+    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+
+   <link rel="stylesheet" href="{% static "fonts/font-awesome/css/font-awesome.min.css" %}">
+
+   <link rel="stylesheet" href="{% static "css/main.css" %}">
+
+   <link rel="stylesheet" href="{% static "css/responsive.css" %}">
+
+   <link rel="stylesheet" href="{% static "css/calendar.css" %}">
+   <link rel="stylesheet" href="{% static "css/owl.carousel.css" %}">
+
+   <link rel="stylesheet" href="{% static "css/owl.theme.css" %}">
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+   <script src="{% static "js/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+
+        <style>
+
+
+
+{#            live score  style#}
+
+
+#tab-content
+{
+    border-bottom: 2px solid #20c1dd;
+
+}
+.tab-content{
+    margin-bottom: 2%;
+}
+#tab-content li.active a {
+    color: #000000;
+    border-bottom: 4px solid #20c1dd;
+}
+#tab-content a::after{
+    position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #20c1dd;
+  content: '';
+  opacity: 0;
+  -webkit-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+  -moz-transition: height 0.3s, opacity 0.3s, -moz-transform 0.3s;
+  transition: height 0.3s, opacity 0.3s, transform 0.3s;
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+#tab-content a:hover::after,
+#tab-content a:focus::after,
+#tab-content a:active::after {
+  height: 4px;
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  transform: translateY(0px);
+}
+  .nav-tabs>li>a{
+    color: black;
+  }
+
+
+{#scorecard#}
+
+.match-header .text-h5 {
+    padding: 14px 0 10px 0;
+}
+.center {
+    text-align: center;
+}
+.text-h5 {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: .25em;
+    font-family: 'SkyNewsReg',arial,sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal;
+}
+
+.match-header.mh-pre .row-table {
+    border-bottom: 8px solid #063d90;
+}
+.match-header .row-table {
+    border-radius: 4px;
+    position: relative;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAB3CAIAAABE5x14AAAASUlEQVR4AWP6jwqYGFABBv83KiCkHt18+qqn3LyRJk+peRj8b6gAQz8jKqBUnlT1o3w6hy87exAyQtc/GPmj/FE+Ixr/P5nmAQBpwhGTmMvDHwAAAABJRU5ErkJggg==) 0 35px repeat-x;
+}
+.row-table {
+    display: table;
+    width: 100%;
+    padding-left: 0;
+    table-layout: fixed;
+}
+
+
+.match-header .row-table>.col {
+    padding-left: 0;
+}
+.row-table>.col:first-child {
+    padding-left: 0;
+}
+.row-table>.col {
+    display: table-cell;
+    padding-left: 12px;
+    vertical-align: middle;
+}
+.box {
+    position: relative;
+    margin-bottom: 12px;
+    zoom: 1;
+}
+.match-header .row-table .badges.-left {
+    left: -14px;
+}
+.match-header .row-table .badges {
+   margin-top: 15px;
+    width: 106px;
+    height: 106px;
+    top: -18px;
+}
+.-left {
+    float: left;
+}
+
+.match-header .row-table .text-h1 {
+    margin-bottom: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: black;
+    font-size: 30px;
+    padding: 16px 0;
+}
+.-txt-right, .-txt-right td {
+    text-align: right;
+}
+.text-h1 {
+    font-size: 30px;
+    font-size: 1.875rem;
+    line-height: 1.2;
+    margin-bottom: .25em;
+    font-family: 'SkyNewsReg',arial,sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal;
+}
+
+.-txt-right, .-txt-right td {
+    text-align: right;
+}
+.text-h2 {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: .25em;
+    font-family: 'SkyNewsReg',arial,sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal;
+}
+
+.match-header .row-table>.col.span10 {
+    vertical-align: top;
+    padding-top: 46px;
+}
+.match-header .row-table>.col {
+    padding-left: 0;
+}
+.row-table>.col {
+    display: table-cell;
+    padding-left: 12px;
+    vertical-align: middle;
+}
+.-center {
+    text-align: center;
+}
+
+.match-header .row-table span.text-h2.strap2 {
+    color: white;
+}
+.match-header .row-table span.text-h2 {
+    color: black;
+    padding: 20px 12px 22px !important;
+    text-transform: uppercase;
+}
+.match-header .row-table .text-h2 {
+    color: white;
+    font-size: 20px !important;
+    padding: 10px 0 6px 0;
+}
+.strap2.-interact, .strap2-interact {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABKCAIAAAD16KlxAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGFJREFUGFd9jzEOAkEMAz0T/kLLt+7diC/QmmK5Qwh0heUkHhdxu11Ncog/vlQBaTQRltsIOFQSDUc2rO6Exe431NQBBW28+GbA5+OuqbZOou3iD89nb52v7HfefzlTz/MXXh4ncMdqefAAAAAASUVORK5CYII=");
+}
+.strap2 {
+    background-position: 0 50%;
+    background-repeat: repeat-x;
+    padding: .5em 12px;
+    color: #fff;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABKCAIAAAD16KlxAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGFJREFUGFd9jzEOAkEMAz0T/kLLt+7diC/QmmK5Qwh0heUkHhdxu11Ncog/vlQBaTQRltsIOFQSDUc2rO6Exe431NQBBW28+GbA5+OuqbZOou3iD89nb52v7HfefzlTz/MXXh4ncMdqefAAAAAASUVORK5CYII=");
+}
+.text-h2 {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: .25em;
+    font-family: 'SkyNewsReg',arial,sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal;
+}
+
+.match-header .row-table .badges.-right {
+    right: -14px;
+}
+
+.-right {
+    float: right !important;
+}
+.match-header .text-h5 {
+    padding: 14px 0 10px 0;
+}
+
+.page-nav__offset{
+    color: white;
+}
+
+.arrow_box {
+
+    position: relative;
+    background: grey;
+    padding: 15px;
+}
+.arrow_box:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 100%;
+    top: 0%;
+    margin-top: 0px;
+    width: 0;
+    /* height: 42%; */
+    border-top: 26px solid transparent;
+    border-right: 20px solid grey;
+    border-bottom: 25px solid transparent;
+    border-left: 68px solid transparent;
+}
+
+
+.widget {
+    background: #fff;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAEsCAIAAACNMk6CAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACdJREFUOMtj+v//PxMDAwNNMT3sGKxuoZd9tLZnOKST4RIXIzh/AQAa9SM4UNgtAgAAAABJRU5ErkJggg==");
+    background-position: 0 50%;
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    border: 2px solid white;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 2px 0 #aaa;
+    box-shadow: 0 0 2px 0 #aaa;
+    color: #111;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.4;
+    margin-bottom: .25em;
+    padding: 18px;
+}
+
+.text-h3 {
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin-bottom: .25em;
+    font-family: 'SkyNewsReg',arial,sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal;
+}
+
+
+{#accordion#}
+.accordion{
+    cursor: pointer;
+}
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+#tabbox{
+    display: none;
+}
+.icon{
+    float: right;
+}
+.tab-item{
+    padding-left: 20px;
+}
+.team-status{
+    margin-top: 4px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 28%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 63%, rgba(237,237,237,1) 74%);
+    background: -webkit-gradient(left top, left bottom, color-stop(20%, rgba(255,255,255,1)), color-stop(28%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(63%, rgba(237,237,237,1)), color-stop(74%, rgba(237,237,237,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 28%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 63%, rgba(237,237,237,1) 74%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 28%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 63%, rgba(237,237,237,1) 74%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 28%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 63%, rgba(237,237,237,1) 74%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 28%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 63%, rgba(237,237,237,1) 74%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+}
+
+
+.highlight {
+    color: #999;
+    margin-left: .5em;
+}
+
+.team-name{
+    text-transform: uppercase;
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    background: rgba(73,155,234,1);
+background: -moz-linear-gradient(top, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 57%, rgba(32,124,229,1) 75%, rgba(32,124,229,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(73,155,234,1)), color-stop(57%, rgba(73,155,234,1)), color-stop(75%, rgba(32,124,229,1)), color-stop(100%, rgba(32,124,229,1)));
+background: -webkit-linear-gradient(top, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 57%, rgba(32,124,229,1) 75%, rgba(32,124,229,1) 100%);
+background: -o-linear-gradient(top, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 57%, rgba(32,124,229,1) 75%, rgba(32,124,229,1) 100%);
+background: -ms-linear-gradient(top, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 57%, rgba(32,124,229,1) 75%, rgba(32,124,229,1) 100%);
+background: linear-gradient(to bottom, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 57%, rgba(32,124,229,1) 75%, rgba(32,124,229,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5', GradientType=0 );
+}
+
+.rbo{
+    text-transform: uppercase;
+    color: white;
+    background: rgba(212,35,8,1);
+background: -moz-linear-gradient(top, rgba(212,35,8,1) 0%, rgba(187,25,7,1) 0%, rgba(187,25,7,1) 3%, rgba(182,29,12,1) 43%, rgba(225,44,20,1) 56%, rgba(119,51,45,1) 91%, rgba(92,53,51,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(212,35,8,1)), color-stop(0%, rgba(187,25,7,1)), color-stop(3%, rgba(187,25,7,1)), color-stop(43%, rgba(182,29,12,1)), color-stop(56%, rgba(225,44,20,1)), color-stop(91%, rgba(119,51,45,1)), color-stop(100%, rgba(92,53,51,1)));
+background: -webkit-linear-gradient(top, rgba(212,35,8,1) 0%, rgba(187,25,7,1) 0%, rgba(187,25,7,1) 3%, rgba(182,29,12,1) 43%, rgba(225,44,20,1) 56%, rgba(119,51,45,1) 91%, rgba(92,53,51,1) 100%);
+background: -o-linear-gradient(top, rgba(212,35,8,1) 0%, rgba(187,25,7,1) 0%, rgba(187,25,7,1) 3%, rgba(182,29,12,1) 43%, rgba(225,44,20,1) 56%, rgba(119,51,45,1) 91%, rgba(92,53,51,1) 100%);
+background: -ms-linear-gradient(top, rgba(212,35,8,1) 0%, rgba(187,25,7,1) 0%, rgba(187,25,7,1) 3%, rgba(182,29,12,1) 43%, rgba(225,44,20,1) 56%, rgba(119,51,45,1) 91%, rgba(92,53,51,1) 100%);
+background: linear-gradient(to bottom, rgba(212,35,8,1) 0%, rgba(187,25,7,1) 0%, rgba(187,25,7,1) 3%, rgba(182,29,12,1) 43%, rgba(225,44,20,1) 56%, rgba(119,51,45,1) 91%, rgba(92,53,51,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d42308', endColorstr='#5c3533', GradientType=0 );
+}
+
+.table-cricket-batting .t-name {
+    text-align: left;
+    width: 134px;
+}
+.table th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.table-cricket-batting th {
+    font-size: 13px !important;
+}
+
+
+.table-cricket-batting .t-detail {
+    font-size: 13px;
+    font-family: Arial,sans-serif;
+    text-align: left;
+}
+.table th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.table-cricket-batting .t-runs {
+    text-align: right;
+    width: 50px;
+    white-space: nowrap;
+}
+.table-cricket-batting .t-balls {
+    width: 46px;
+}
+
+.table-cricket-batting .t-balls, .table-cricket-batting .t-4s, .table-cricket-batting .t-6s {
+    text-align: right;
+    width: 34px;
+}
+
+.table-cricket-batting .t-sr {
+    width: 68px;
+}
+
+.player-score{
+    background-color: #cccccc
+}
+
+.si-fow-count {
+    color: #191919;
+    font-family: 'robotomedium',sans-serif;
+    font-size: 15px;
+    line-height: 26px;
+    text-transform: uppercase;
+    padding-right: 8px;
+    position: relative;
+}
+.si-fow {
+    padding-right: 8px;
+}
+.si-fow-over {
+    padding-left: 8px;
+}
+
+.fall-of-wickets{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+ @media (min-width: 801px){
+    .page-nav__offset {
+    -o-transform: translateY(0) !important;
+    -webkit-transform: translateY(0) !important;
+    -moz-transform: translateY(0) !important;
+    -ms-transform: translateY(0) !important;
+    transform: translateY(0) !important;
+}}
+
+
+{# style for score on score page#}
+
+.content-box{
+    background-color: white;
+    box-shadow: 10px 10px 5px #888888;
+    margin-bottom: 2%;
+}
+
+.info{
+    background-color: #20c1dd;
+    border-color: #00BCD4;
+    color: #fff;
+}
+
+.vs{
+    text-align: center;
+    margin-top: 5%;
+
+}
+
+{#match details info#}
+
+.match-box{
+    background-color: white;
+}
+.left-arrows{
+    position: relative;
+	color: #ffffff;
+    background-color: #20c1dd;
+    font-size: 30px;
+
+}
+
+.left-arrows:after{
+    right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(32, 193, 221, 0);
+	border-right-color: #20c1dd;
+	border-width: 30px;
+	margin-top: -30px;
+}
+
+{#taggss style#}
+.tags a, .tags a:visited {
+    display: inline-block;
+    padding: 5px 10px 6px;
+    position: relative;
+    color: #fff;
+    font-size: 11px;
+    line-height: 10px;
+    margin: 0 0 5px 20px;
+    text-decoration: none;
+}
+
+.tags a {
+    background: #5ba4e5;
+}
+.tags a:before {
+    border-color: transparent #5ba4e5 transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 10px 8px;
+    content: "";
+    height: 1px;
+    left: -17px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+
+.tags a:after {
+    background: #fff;
+    content: "";
+    height: 4px;
+    left: -2px;
+    position: absolute;
+    top: 8px;
+    width: 4px;
+    z-index: 999;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+
+{#            style for polls#}
+.content ul{
+    list-style: none;
+}
+
+
+{#            fixtures page style#}
+.matches{
+    background: #D3D3D3;
+    margin-top: 5px;
+}
+.matches a{
+text-decoration: none;
+}
+.matches h2{
+font-size: 22px;
+    color: #f07c00;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+{#single article pages#}
+.detail-content{
+    margin-top:5px ;
+}
+
+
+{#            poll style#}
+
+.horizontal .progres-bar {
+  float: left;
+  height: 45px;
+  width: 100%;
+  padding: 12px 0;
+}
+
+.progres-track {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background: #ebebeb;
+}
+
+.progres-fill {
+  position: relative;
+  background: #666;
+  height: 20px;
+  width: 50%;
+  color: #fff;
+  text-align: center;
+  font-family: "Lato","Verdana",sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.progres-track,
+.progres-fill {
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+}
+
+    </style>
+
+</head>
+   <body>
+      <!-- Logo and Ad banner -->
+      <div class="logo-top-ad">
+         <div class="container">
+            <div class="row">
+               <!-- Magalla Logo -->
+               <div class="logo col-lg-4">
+                  <a href="{% url 'index' %}"><img alt="" src="{% static "img/rt-new-logo_2.png" %}" /></a>
+               </div>
+               <div class="top-banner col-lg-8">
+                  <!-- Top ad banner -->
+                  <a href="#"><img alt="" src="img/top-banner.jpg" /></a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Main Menu -->
+      <div class="main-menu">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-8">
+                  <!-- Main Menu -->
+                  <ul id="main-menu-items" class="sm sm-menu menu-efct">
+                     <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                     <li><a href="{% url 'fixtures' %}">Fixtures</a></li>
+                     <li class="mega-menu-li">
+                        <a href="#">Featured News</a>
+                        <!-- Main Menu - Mega Menu -->
+                         {% if post_list %}
+                            <ul class="mega-menu">
+                               <li>
+                                  <h3 class="sec-title">MUSIC NEWS</h3>
+                                   {% for post in post_list %}
+
+                                      <div class="sec-1-sm">
+                                         <img alt="" class="blocky" src="{{ post.image.url }}" style="height: 85px; width: 107px" />
+                                          <span>
+                                             <div class="sec-1-sm-text blocky">
+                                                <a href="{{ post.get_absolute_url }}"><h3>{{ post.title }}</h3> </a>
+                                                <h6><span><i class="fa fa-clock-o"></i>{{ post.publish }}</span></h6>
+                                                <p>{{ post.content | truncatewords:10 }}</p>
+                                             </div>
+                                          </span>
+                                      </div>
+                                   {% endfor %}
+                                   </li>
+                            </ul>
+                         {% endif %}
+                     </li>
+                     <li>
+                        <a href="#">Forum</a>
+                        <ul class="main-menu-sub">
+                           <li><a href="#">Top 100</a></li>
+                           <li><a href="#">Awards</a></li>
+                           <li><a href="#">Gameplays</a></li>
+                           <li><a href="#">Music Charts</a></li>
+                           <li><a href="#">Trending</a></li>
+                           <li><a href="#">Dance/Electronic</a></li>
+                           <li><a href="#">Articles</a></li>
+                        </ul>
+                     </li>
+                     <li><a href="#">Reviews</a></li>
+                  </ul>
+               </div>
+               <div class="col-lg-4 main-search-bar">
+                  <!-- Top Search bar -->
+                  <form class="navbar-form float-width" role="search" id = 'form-search' action="{% url 'search' %}" method="POST">
+                      {% csrf_token %}
+                     <div class="form-group float-width">
+                        <input type="text" name="query" class="form-control float-width" placeholder="Search for games, music, movies">
+                     </div>
+                     <a href="#" type="submit"><i class="fa fa-search"></i></a>
+                  </form>
+               </div>
+            </div>
+            <!-- Close the Fixed Menu button -->
+            <a class="fxd-mnu-x trans1" title="Close" id="hidemenu"><span class="fa-stack fa-lg"> <i class="fa fa-times fa-stack-1x fa-inverse"></i> </span></a>
+         </div>
+      </div>
+
+
+
+        <div class="container">
+         <div class="float-width ticker">
+            <h3 class="cat-label1">BREAKING NEWS</h3>
+            <ul class="newsticker">
+                {% for news in breaking_news %}
+                   <li>
+                      <h4>{{ news.title }}</h4>
+                   </li>
+                {% endfor %}
+
+            </ul>
+            <div class="ticker-ctrls">
+               <a id="tkr-prev">&#59237;</a>
+               <a id="tkr-nxt">&#59238;</a>
+            </div>
+         </div>
+      </div>
+      <!-- Home Slider and Big news blocks -->
+      <div class="container">
+        {% block main %}
+        {% endblock %}
+      </div>
+      <!-- Footer -->
+      <div class="main-footers">
+         <div class="container">
+            <!-- Category footer -->
+            <div class="cat-ftr-cont float-width">
+               <div class="cat-ftr-cont-sngl lefty cat-brd-1">
+                  <h3>News</h3>
+                  <ul>
+                     <li><a href="#">Nation</a></li>
+                     <li><a href="#">World</a></li>
+                     <li><a href="#">Politics</a></li>
+                     <li><a href="#">Funny</a></li>
+                     <li><a href="#">Weather</a></li>
+                  </ul>
+               </div>
+               <div class="cat-ftr-cont-sngl lefty cat-brd-2">
+                  <h3>Music</h3>
+                  <ul>
+                     <li><a href="#">Hip Hop / Rap</a></li>
+                     <li><a href="#">Latino</a></li>
+                     <li><a href="#">Electronic and Disco</a></li>
+                     <li><a href="#">R&B</a></li>
+                     <li><a href="#">Pop</a></li>
+                     <li><a href="#">Rock & Roll</a></li>
+                     <li><a href="#">Ragga</a></li>
+                     <li><a href="#">More...</a></li>
+                  </ul>
+               </div>
+               <div class="cat-ftr-cont-sngl lefty cat-brd-3">
+                  <h3>TV & Movies</h3>
+                  <ul>
+                     <li><a href="#">In Theaters</a></li>
+                     <li><a href="#">Showtimes & Tickets</a></li>
+                     <li><a href="#">Latest Trailers</a></li>
+                     <li><a href="#">Release Calendar</a></li>
+                     <li><a href="#">TV Home</a></li>
+                     <li><a href="#">On Tonight</a></li>
+                     <li><a href="#">DVD & Blu-Ray</a></li>
+                  </ul>
+               </div>
+               <div class="cat-ftr-cont-sngl lefty cat-brd-4">
+                  <h3>Tech</h3>
+                  <ul>
+                     <li><a href="#">Mobiles</a></li>
+                     <li><a href="#">Desktops</a></li>
+                     <li><a href="#">Outside Electronic</a></li>
+                     <li><a href="#">Sound Devices</a></li>
+                     <li><a href="#">AGD & RTV</a></li>
+                  </ul>
+               </div>
+               <div class="cat-ftr-cont-sngl lefty cat-brd-5">
+                  <h3>Games</h3>
+                  <ul>
+                     <li><a href="#">PC</a></li>
+                     <li><a href="#">PlayStation 4</a></li>
+                     <li><a href="#">Xbox One</a></li>
+                     <li><a href="#">Mobiles</a></li>
+                     <li><a href="#">Portable Consoles</a></li>
+                     <li><a href="#">Nintendo</a></li>
+                  </ul>
+               </div>
+            </div>
+            <!-- Info footer -->
+            <div class="info-ftr float-width">
+               <div class="mag-info lefty">
+                  <a class="ftr-logo" href="#"><img alt="" src="img/logo-footer.png" /></a>
+                  <p>Suspendisse dapibus blandit auctor. Aenean nisl felis, fermentum in ante sit amet, lobortis hendrerit nunc. Curabitur pharetra in velit at ornare... <a href="#">READ ABOUT US</a></p>
+                  <div class="scl-ftr float-width">
+                     <h3>STAY IN TOUCH!</h3>
+                     <ul>
+                        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook" class="trans1 fb-ftr" ></a></li>
+                        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter" class="trans1 tw-ftr"></a></li>
+                        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest" class="trans1 pin-ftr"></a></li>
+                        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="YouTube" class="trans1 yt-ftr"></a></li>
+                        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram" class="trans1 ins-ftr"></a></li>
+                        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Vimeo" class="trans1 vm-ftr"></a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="post-ftr lefty">
+                  <h3>LATEST POSTS</h3>
+                  <div class="pst-ftr-sngl float-width">
+                     <a href="#" class="lefty pst-ftr-img"><img alt="" src="img/samples/y1.jpg" /></a>
+                     <h5>Pizza will be delivered by Drons</h5>
+                     <h6 class="lefty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                     <a href="#" class="lefty stars"><img alt="" src="img/4-stars.png"></a>
+                  </div>
+                  <div class="pst-ftr-sngl float-width">
+                     <a href="#" class="lefty pst-ftr-img"><img alt="" src="img/samples/y2.jpg" /></a>
+                     <h5>YouTube as a real Television?</h5>
+                     <h6 class="lefty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                     <a href="#" class="lefty stars"><img alt="" src="img/4-stars.png" /></a>
+                  </div>
+                  <div class="pst-ftr-sngl float-width">
+                     <a href="#" class="lefty pst-ftr-img"><img alt="" src="img/samples/y3.jpg" /></a>
+                     <h5>Flying Mouse to your PC</h5>
+                     <h6 class="lefty"><span><i class="fa fa-clock-o"></i>20 Jan 2014</span><span><i class="fa fa-comment-o"></i>21 comments</span></h6>
+                     <a href="#" class="lefty stars"><img alt="" src="img/4-stars.png" /></a>
+                  </div>
+               </div>
+               <div class="twts-ftr lefty">
+                  <h3>LATEST TWEETS</h3>
+                  <ul>
+                     <li>
+                        <p><span class="tw-uname">@EiadTweets</span> Vetstibulum laoreet is are go mauris ac <span class="hsh">#vulputate</span> pellentes , justorle atus pulvinar augue.</p>
+                     </li>
+                     <li>
+                        <p><span class="tw-uname">@EiadTweets</span> Vetstibulum laoreet is are go mauris ac <span class="hsh">#vulputate</span> pellentes , justorle atus pulvinar augue.</p>
+                     </li>
+                     <li>
+                        <p><span class="tw-uname">@EiadTweets</span> Vetstibulum laoreet is are go mauris ac <span class="hsh">#vulputate</span> pellentes , justorle atus pulvinar augue.</p>
+                     </li>
+                  </ul>
+                  <h6><a href="#" class="all-twts righty trans1"><i class="fa fa-twitter"></i> Read all tweets</a></h6>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Copy right footer -->
+      <div class="copy-rt-ftr">
+         <div class="container">
+            <a class="lefty"></a>
+            <a href="#" class="righty">Design and development by: LarysChember</a>
+         </div>
+      </div>
+   <!-- Main Home Layout Ends -->
+
+   <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=823385721128354";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+   <!-- jQuery (necessary JavaScript plugins) -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+   <script src="{% static "js/jquery.smartmenus.min.js" %}"></script>
+   <script src="{% static "js/jquery.flexslider-min.js" %}"></script>
+   <script src="{% static "js/newsTicker.js" %}"></script>
+   <script src="{% static "js/jquery.customSelect.min.js" %}"></script>
+   <script src="{% static "js/retina-1.1.0.min.js" %}"></script>
+   <script src="{% static "js/jflickrfeed.min.js" %}"></script>
+   <script src="{% static "js/owl.carousel.js" %}"></script>
+   <script src="{% static "js/main.js" %}"> </script>
+
+
+   </body>
+</html>

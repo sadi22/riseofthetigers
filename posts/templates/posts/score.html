@@ -1,0 +1,231 @@
+{% extends 'posts/base.html' %}
+{% load staticfiles %}
+{% block main %}
+        <div class="row">
+            <div class="col-md-12 head-div">
+                <div class="row content-box">
+                    <div class="col-md-12">
+                        <div class="info">
+                            <div style="text-align: center">
+                                <h4 style="color: white">{{ match_details.matchSummary.series.name }}</h4>
+                                <h4 style="color: white">{{ match_details.matchSummary.venue.name }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-5">
+                            <div class="wrap">
+                                <img class="-left img-circle" src="{{ match_details.matchSummary.homeTeam.logoUrl }}" style="border: 10px solid #20c1dd;height: 106px;width: 106px">
+                                <div class="team-wrap" style="float: right">
+                                    <h2>{{ match_details.matchSummary.homeTeam.name }}</h2>
+                                    {% if match_details.matchSummary.scores.homeScore %}
+                                    <h3>{{ match_details.matchSummary.scores.homeScore }}</h3>
+                                    <h3>Overs: {{ match_details.matchSummary.scores.homeOvers }}</h3>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 vs">
+                            <h2>VS</h2>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="wrap">
+                                <img class="-left img-circle" src="{{ match_details.matchSummary.awayTeam.logoUrl }}" style="border: 10px solid #20c1dd;float:right;height: 106px;width: 106px">
+                                <div class="team-wrap" style="float: left">
+                                    <h2>{{ match_details.matchSummary.awayTeam.name }}</h2>
+                                    {% if match_details.matchSummary.scores.awayScore %}
+                                    <h3>{{ match_details.matchSummary.scores.awayScore }}</h3>
+                                    <h3>Overs: {{ match_details.matchSummary.scores.awayOvers }}</h3>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{#                     <div class="col-md-5">#}
+{#                        <img class="-left img-circle" src="{{ match_details.matchSummary.homeTeam.logoUrl }}" style="height: 106px;width: 106px">#}
+{#                        <h1 class="right">{{ match_details.matchSummary.homeTeam.name }} </h1>#}
+{#                        <h2 class="right team-score">{{ match_details.matchSummary.scores.homeScore }}</h2>#}
+{#                    </div>#}
+{#                    <div class="col-md-2">#}
+{#                        <h2 style="text-align: center">Result</h2>#}
+{#                        <div class="result">#}
+{#                            <h2 class="res">Result</h2>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-md-5">#}
+{#                        <img class="-right img-circle" src="{{ match_details.matchSummary.awayTeam.logoUrl }}" style="height: 106px;width: 106px">#}
+{#                        <h1 class="left">{{ match_details.matchSummary.awayTeam.name }}</h1>#}
+{#                        <h2 class="left team-score">{{ match_details.matchSummary.scores.awayScore }}</h2>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+        <section class="main-contents">
+        {% if score_card  %}
+            <div class="row">
+                <div class="col-md-8">
+                   <div id="match-accordian">
+                   {% for batsmen in score_card %}
+                        <div class="team-status tab">
+                            <h3 class="tab-item">
+                                <span class="icon glyphicon glyphicon-plus" style="padding: 1px;"></span>
+                                {{ batsmen.name }} <span class="highlight">{{ batsmen.run }}/{{ batsmen.wicket }}</span>
+                            </h3>
+                        </div>
+                        <div class="" id="tabbox">
+                            <div class="box" data-team="3">
+                                <table class="table table-cricket-batting skynews -small -txt-right" title="Yorks Batting">
+                                    <caption class="team-name">{{ teamNames.teamInfo.hometeam }} Batting</caption>
+                                    <tbody>
+                                      <tr class="rbo">
+                                          <th class="t-name" title="Name"></th>
+                                          <th class="t-detail" title="Details"></th>
+                                          <th class="t-runs" title="Runs">Runs</th>
+                                          <th class="t-balls" title="Balls">B</th>
+                                          <th class="t-4s" title="Fours">4<small>s</small></th>
+                                          <th class="t-6s" title="Sixes">6<small>s</small></th>
+                                          <th class="t-sr -txt-right" title="Strike Rate">SR</th>
+                                      </tr>
+                                      {% for player in batsmen.batsmen %}
+                                          <tr class="player-score">
+                                             <td class="t-name"><a href="#">{{ player.name }} </a></td>
+                                             <td class="t-detail">{{ player.howOut }}</td>
+                                             <td class="t-runs">{{ player.runs }}</td>
+                                             <td class="t-balls">{{ player.balls }}</td>
+                                             <td class="t-4s">{{ player.fours }}</td>
+                                             <td class="t-6s">{{ player.sixes }}</td>
+                                             <td class="t-sr">{{ player.strikeRate }}</td>
+                                          </tr>
+                                      {% endfor %}
+                                      <tr class="player-score">
+                                          <td class="t-name text-h5">Extras</td>
+                                          <td class="t-detail">
+                                              {{ batsmen.legBye }}lb, {{ batsmen.wide }}w,  {{ batsmen.noBall}}n</td>
+                                          </td>
+                                          <td class="t-runs"> {{ batsmen.extra }}</td>
+                                          <td class="t-balls"></td>
+                                          <td class="t-4s"></td>
+                                          <td class="t-6s"></td>
+                                          <td class="t-sr"></td>
+                                      </tr>
+                                      <tr class="player-score">
+                                        <td class="t-name text-h5">Total</td>
+                                        <td class="t-detail">{{ batsmen.over }} Overs, {{ batsmen.wicket }} wkts</td>
+                                        <td class="rbo">{{ batsmen.run }}</td>
+                                        <td class="t-balls"></td>
+                                        <td class="t-4s"></td>
+                                        <td class="t-6s"></td>
+                                        <td class="t-sr"></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                            <div >
+                            <div class="content-wrap">
+                                <h3>Fall Of Wickets</h3>
+                                <div class="fall-of-wickets">
+                                    {% for player in batsmen.batsmen %}
+                                        <span class="si-fow-count">
+                                            <strong class="si-fow">{{ player.fallOfWicket }}</strong>
+                                            (<span class="si-player-name highlightTxt">{{ player.name }}</span>
+                                            <span class="si-fow-over">{{ player.fallOfWicketOver }} Overs</span>),
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            </div>
+                            <div class="tab-area on" data-role="tab-box" id="tabbox0">
+                                <div class="box" data-team="3">
+                                    <table class="table table-cricket-batting skynews -small -txt-right" title="Yorks Batting">
+                                        <caption class="team-name">{{ teamNames.teamInfo.awayteam }} Bowling</caption>
+                                        <tbody>
+                                            <tr class="rbo">
+                                                <th class="t-name" title="Name"></th>
+                                                <th class="t-detail" title="Details"></th>
+                                                <th class="t-runs" title="Runs">O</th>
+                                                <th class="t-balls" title="Balls">M</th>
+                                                <th class="t-4s" title="Fours">R</th>
+                                                <th class="t-6s" title="Sixes">W</th>
+                                                <th class="t-sr -txt-right" title="Strike Rate">Econ</th>
+                                            </tr>
+
+
+                                            {% for player in batsmen.bowlers %}
+                                                <tr class="player-score">
+                                                   <td class="t-name"><a href="#">{{ player.name }} </a></td>
+                                                   <td class="t-detail"></td>
+                                                   <td class="t-runs">{{ player.overs }}</td>
+                                                   <td class="t-balls">{{ player.maidens }}</td>
+                                                   <td class="t-4s">{{ player.runsConceded }}</td>
+                                                   <td class="t-6s">{{ player.wickets }}</td>
+                                                   <td class="t-sr">{{ player.economy }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                   {% endfor %}
+                   </div>
+                </div>
+                <div class="col-md-4 match-box">
+                    <div class="left-arrows">
+                        Scorecard
+                    </div>
+                    <div class="match-details">
+                        <table class="table">
+                            <tbody>
+                              <tr>
+                                <td>Date</td>
+                                <td>{{ match_details.matchSummary.localStartDate }}</td>
+                              </tr>
+                              <tr>
+                                <td>Toss</td>
+                                <td>{{ match_details.tossMessage }}</td>
+                              </tr>
+                              <tr>
+                                <td>Venue</td>
+                                <td>{{ match_details.matchSummary.venue.name }}</td>
+
+                              </tr>
+                              <tr>
+                                <td>Umpires</td>
+                                <td>{{ match_details.umpires.firstUmpire.name }}, {{  match_details.umpires.secondUmpire.name }},
+                                {{ match_details.umpires.thirdUmpire.name }}</td>
+
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        {% else %}
+            <p>The match squad lists will appear here..</p>
+    {% endif %}
+
+    </section>
+
+</div>
+
+
+    <script>
+{#var url      = window.location.href;#}
+{#console.log(url)#}
+{#    setInterval(function(){#}
+{#        $.ajax({#}
+{#           url: '/score/{{ series_id }}/{{ match_id }}',#}
+{#              success: function(data) {#}
+{#              $('body').html(data);#}
+{#              }#}
+{#        });#}
+{#    }, 5000)#}
+
+
+    </script>
+{% endblock %}

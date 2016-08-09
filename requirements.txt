@@ -1,0 +1,8 @@
+django
+flask
+django-autoslug
+django-contrib-comments
+datetime
+django-stdimage
+beautifulsoup4
+django-taggit
