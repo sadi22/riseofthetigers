@@ -103,6 +103,7 @@ def article(request, slug=None):
 
 
 def fixtures(request):
+
     breaking_news = "http://caprodseacs03.cloudapp.net/news/popular?limit=5"
     response = urlopen(breaking_news)
     data = json.loads(response.read())
@@ -139,13 +140,21 @@ def fixtures(request):
 
 
 def search(request):
+    breaking_news = "http://caprodseacs03.cloudapp.net/news/popular?limit=5"
+    response = urlopen(breaking_news)
+    data = json.loads(response.read())
+    breaking_news = data['newsArticles']
+    result = ''
+
     if request.method == 'POST':
         req = request.POST.get("query")
         result = Post.objects.all().filter(title__icontains=req)
-        context = {
-            'result': result
-        }
-        return render(request, 'posts/result.html', context)
+
+    context = {
+        'result': result,
+        'breaking_news': breaking_news,
+    }
+    return render(request, 'posts/result.html', context)
 
 
 def create_post(request):
