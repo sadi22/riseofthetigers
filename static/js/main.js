@@ -2,10 +2,19 @@ var hidemenu;
 
 
 $(document).ready(function(){
+
+    var str=location.href.toLowerCase();
+    $("#main-menu-items li a").each(function() {
+        if (str.indexOf(this.href.toLowerCase()) > -1) {
+            $("li.active").removeClass("active");
+            $(this).parent().addClass("active");
+        }
+    });
+
+
     $(".tab").click(function(){
         $(this).next('#tabbox').toggle();
         $(".glyphicon", this).toggleClass("glyphicon-plus glyphicon-minus");
-        console.log('hello')
     });
 
     var acc = document.getElementsByClassName("accordion");
@@ -136,7 +145,8 @@ $(document).ready(function(){
             }
         }
     });
-    
+
+
 });
 
 
@@ -288,13 +298,7 @@ jQuery(document).ready(function() {
         },
         itemTemplate: '<a href="{{image_b}}"><img src="{{image_m}}" alt="{{title}}" /></a>'
     });
-
-    /* Right Side Calender */
-    var cal = CALENDAR();
-
-    cal.init();
-
-
+    
     /* Tooltips */
     $('.mag-info a').tooltip();
 

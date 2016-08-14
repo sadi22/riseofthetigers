@@ -59,57 +59,27 @@
             </div>
             <!-- Article Author Bio -->
             <div class="author-bio float-width">
-               <h3 class="float-width">john smithowsky</h3>
-               <div class="author-info">
-                  <img alt="" src="img/samples/a2.jpg" />
-                  <p>
-                     Aliquam tristique vehicula nulla sit amet facilisis. Nulla ultrices vitae eros at semper. Donec sapien lacus, tincidunt sed sem quis, accumsan mollis eros. Aenean id enim dolor. Suspendisse potenti.
-                  </p>
-                  <ul>
-                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                     <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                     <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                  </ul>
-               </div>
+               <h3 class="float-width">by {{ details.user }}</h3>
+{#               <div class="author-info">#}
+{#                  <img alt="" src="img/samples/a2.jpg" />#}
+{#                  <p>#}
+{#                     Aliquam tristique vehicula nulla sit amet facilisis. Nulla ultrices vitae eros at semper. Donec sapien lacus, tincidunt sed sem quis, accumsan mollis eros. Aenean id enim dolor. Suspendisse potenti.#}
+{#                  </p>#}
+{#                  <ul>#}
+{#                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+{#                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+{#                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+{#                     <li><a href="#"><i class="fa fa-rss"></i></a></li>#}
+{#                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>#}
+{#                     <li><a href="#"><i class="fa fa-pinterest"></i></a></li>#}
+{#                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>#}
+{#                  </ul>#}
+{#               </div>#}
             </div>
             <!-- Article Comments Section -->
             <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
             <!-- related Articles  -->
-            <div class="artcl-reltd float-width">
-               <h3 class="sec-title">RELATED POSTS</h3>
-               <div class="reltd-sngl">
-                  <img alt="" src="img/samples/e1.jpg">
-                  <div class="reltd-sngl-txt">
-                     <h3>After party of Blondi Concert will begin tomorrow </h3>
-                     <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-                  </div>
-               </div>
-               <div class="reltd-sngl">
-                  <img alt="" src="img/samples/e2.jpg">
-                  <div class="reltd-sngl-txt">
-                     <h3>After party of Blondi Concert will begin tomorrow </h3>
-                     <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-                  </div>
-               </div>
-               <div class="reltd-sngl">
-                  <img alt="" src="img/samples/e3.jpg">
-                  <div class="reltd-sngl-txt">
-                     <h3>After party of Blondi Concert will begin tomorrow </h3>
-                     <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-                  </div>
-               </div>
-               <div class="reltd-sngl">
-                  <img alt="" src="img/samples/e4.jpg">
-                  <div class="reltd-sngl-txt">
-                     <h3>After party of Blondi Concert will begin tomorrow </h3>
-                     <p><i class="fa fa-clock-o"></i>20 Jan 2014</p>
-                  </div>
-               </div>
-            </div>
+
          </div>
     </div>
 {% endblock %}

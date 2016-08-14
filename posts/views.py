@@ -17,13 +17,6 @@ def index(request):
     except Post.DoesNotExist:
         raise Http404("No MyModel matches the given query.")
 
-    # query = request.GET.get("query")
-    # if query:
-    #     query_set = Post.objects.all().filter(title__icontains=query)
-    #     return render(request, 'posts/main.html', {'query_set':query_set})
-    # else:
-    #     query_set = None
-
     breaking_news = "http://caprodseacs03.cloudapp.net/news/popular?limit=5"
     response = urlopen(breaking_news)
     data = json.loads(response.read())
@@ -58,7 +51,6 @@ def index(request):
         'complete_matches': complete_matches,
         'poll': poll,
         'top': top_post,
-        # 'query_set': query_set,
 
     }
     return render(request, 'posts/main.html', context)
@@ -95,8 +87,14 @@ def score(request, series_id=None, match_id=None):
 
 def article(request, slug=None):
     post_detail = get_object_or_404(Post, slug=slug)
+    breaking_news = "http://caprodseacs03.cloudapp.net/news/popular?limit=5"
+    response = urlopen(breaking_news)
+    data = json.loads(response.read())
+    breaking_news = data['newsArticles']
+
     context= {
-        'details': post_detail
+        'details': post_detail,
+        'breaking_news': breaking_news,
     }
     return render(request, 'posts/article.html', context)
 
@@ -185,3 +183,16 @@ def create_post(request):
         )
 
 
+def featured_news(request):
+    breaking_news = "http://caprodseacs03.cloudapp.net/news/popular?limit=5"
+    response = urlopen(breaking_news)
+    data = json.loads(response.read())
+    breaking_news = data['newsArticles']
+
+    post_list = Post.objects.all().filter(featured_post='featured')
+
+    context = {
+        'result': post_list,
+        'breaking_news': breaking_news,
+    }
+    return render(request, 'posts/result.html', context)

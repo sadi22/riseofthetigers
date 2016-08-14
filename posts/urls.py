@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^fixtures/$', views.fixtures, name='fixtures'),
     url(r'^create_post/$', views.create_post, name='create_poll'),
     url(r'^search/$', views.search, name='search'),
+    url(r'^featured-news/$', views.featured_news, name='feature'),
 ]

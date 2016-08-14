@@ -634,12 +634,12 @@ font-size: 22px;
                      <li class="active"><a href="{% url 'index' %}">Home</a></li>
                      <li><a href="{% url 'fixtures' %}">Fixtures</a></li>
                      <li class="mega-menu-li">
-                        <a href="#">Featured News</a>
+                        <a href="{% url 'feature' %}">Featured News</a>
                         <!-- Main Menu - Mega Menu -->
                          {% if post_list %}
                             <ul class="mega-menu">
                                <li>
-                                  <h3 class="sec-title">MUSIC NEWS</h3>
+                                  <h3 class="sec-title">Featured NEWS</h3>
                                    {% for post in post_list %}
 
                                       <div class="sec-1-sm">
@@ -782,7 +782,7 @@ font-size: 22px;
                   <div class="scl-ftr float-width">
                      <h3>STAY IN TOUCH!</h3>
                      <ul>
-                        <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook" class="trans1 fb-ftr" ></a></li>
+                        <li><a href="https://www.facebook.com/riseofthetigersLIVE" data-toggle="tooltip" data-placement="bottom" title="Facebook" class="trans1 fb-ftr" ></a></li>
                         <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter" class="trans1 tw-ftr"></a></li>
                         <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest" class="trans1 pin-ftr"></a></li>
                         <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="YouTube" class="trans1 yt-ftr"></a></li>
